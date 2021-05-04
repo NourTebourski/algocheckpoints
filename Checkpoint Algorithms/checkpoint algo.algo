@@ -1,0 +1,22 @@
+ALGORITHM check_point
+VAR
+    i: INTEGER;
+    str_length, word_nbr, vowel_nbr : INTEGER := 0;
+    str : STRING[]:="Nour Tebourski.";
+BEGIN
+    str_length := (str.length) - 1;
+    FOR i FROM 1 TO str_length STEP 1  DO
+        IF (str[i] =' ') THEN
+            word_nbr := word_nbr + 1;
+        END_IF
+
+        IF (str[i] in ['a','A','E','e','I','i','O','o','U','u']) THEN
+            vowel_nbr := vowel_nbr + 1;
+        END_IF
+    END_FOR
+
+    Write('The length of the sentence :',str_length);
+    Write('The number of words in the sentence :',word_nbr+1);
+    Write('The number of vowels in the sentence :',vowel_nbr);
+
+END

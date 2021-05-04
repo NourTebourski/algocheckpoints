@@ -1,0 +1,48 @@
+//  Procedure Sorting an Array 
+PROCEDURE ins_sort(t  : ARRAY_OF INTEGER[10];n : INTEGER)
+VAR
+    i,j,aux : INTEGER;
+BEGIN
+    FOR i FROM 1 TO n-1 STEP 1  DO
+        aux := t[i];
+        j:=i;
+        WHILE (j>0 &&  aux < t[j-1]) DO
+            t[j]:=t[j-1];
+            j:= j-1;
+        END_WHILE
+        t[j]:=aux;
+    END_FOR
+END
+
+// Filling elements inside an Array
+PROCEDURE tab_ins(t ARRAY_OF INTEGER[10];n: INTEGER)
+VAR
+    var i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Write('Insert the ',i+1,' element:');
+        read(t[i]);
+    END_FOR
+END
+// showing the elements in Array
+PROCEDURE aff_tab(t ARRAY_OF INTEGER[10]; n : INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Write('Array[',i,']: ',t[i]);
+    END_FOR
+END
+
+ALGORITHM Isertion
+VAR
+    tab : ARRAY_OF INTEGER[10];
+    n,i : INTEGER;
+BEGIN
+    Write('Insert the Array Length : ');
+    Read(n);
+    tab_ins(tab,n);
+    aff_tab(tab,n);
+    ins_sort(tab,n);
+    aff_tab(tab,n);
+END

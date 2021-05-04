@@ -1,0 +1,76 @@
+// Procedure Dot Product
+
+PROCEDURE dot_product(v1,v2 : ARRAY_OF FLOAT[3])
+VAR
+    i : INTEGER;
+    ps : FLOAT;
+BEGIN
+    ps:=0;
+    FOR i FROM 0 TO 2 STEP 1  DO
+        ps := ps + (v1[i]*v2[i]); 
+    END_FOR
+    IF (ps=0) THEN
+        Write('this two vectors are Orthogonal');
+    ELSE
+        Write('this two vectors are Not Orthogonal');
+    END_IF
+END
+
+// Function Dot Product
+
+FUNCTION dot_productF(v1,v2 : ARRAY_OF FLOAT[3]) : FLOAT;
+VAR
+    i:INTEGER;
+    ps:FLOAT;
+BEGIN
+    FOR i FROM 0 TO 2 STEP 1  DO
+        ps := ps + (v1[i]*v2[i]);
+    END_FOR
+    RETURN ps;
+END
+
+// Principal Program
+
+ALGORITHM Orthogonal
+VAR
+    vector_1, vector_2 : ARRAY_OF FLOAT[3]; 
+    n,i,j : INTEGER;
+
+BEGIN
+    Write('Write the number of Pairs');
+    Read(n);
+
+    // this Algorithme using Procedure
+
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        Write('the ',i+1,'Pairs');
+        FOR j FROM 0 TO 2 STEP 1  DO
+            Write('Write the ',j+1,'element of First Vector');
+            Read(vector_1[j]);
+        END_FOR
+        FOR j FROM 0 TO 2 STEP 1  DO
+            Write('Write the ',j+1,'element of First Vector');
+            Read(vector_2[j]);
+        END_FOR
+        dot_product(vector_1,vector_2);
+    END_FOR
+
+    // this algorithme using Function
+
+        FOR i FROM 0 TO n-1 STEP 1 DO
+        Write('the ',i+1,'Pairs');
+        FOR j FROM 0 TO 2 STEP 1  DO
+            Write('Write the ',j+1,'element of First Vector');
+            Read(vector_1[j]);
+        END_FOR
+        FOR j FROM 0 TO 2 STEP 1  DO
+            Write('Write the ',j+1,'element of First Vector');
+            Read(vector_2[j]);
+        END_FOR
+        IF(dot_productF(vector_1,vector_2)=0) THEN
+            Write('this two vectors are Orthogonal');
+        ELSE
+            Write('this two vectors are Not Orthogonal');
+        END_IF
+    END_FOR
+END
